@@ -1,1 +1,8 @@
 venv/
+.envrc
+.env
+**/*.pyc
+**/__pycache__
+**/*.sqlite3
+.vscode
+staticfiles
