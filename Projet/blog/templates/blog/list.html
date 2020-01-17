@@ -1,0 +1,46 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+{% if items_json %}
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type='text/javascript'>
+    let people = {{ items_json | safe }} ; 
+</script>
+
+<div class="m-5">
+    <div id="app2">
+        [[message]]
+
+        <ol>
+            <li v-for="person in people">
+                <a v-bind:href="person.url">[[ person.name ]]</a> 
+                <button type="button" class="btn btn-primary mb-1" v-on:click="greet(person.name)">
+                    slt! 
+                </button>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+<script>
+    var app = new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#app2',
+        data: {
+            message: 'Salut les gens !',
+            people: people,
+        },
+        methods: {
+            greet: function (name) {
+                console.log('Hello from ' + name + '! :-) ')
+            }
+        }
+    });
+</script>
+{% else %}
+<p>No items availables.</p>
+{% endif %}
+
+{% endblock %}

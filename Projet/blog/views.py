@@ -1,20 +1,19 @@
+import random
+import json
 from django.shortcuts import render
-from django.http import HttpResponse
-
-from .models import Question
-
 
 def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'latest_question_list': latest_question_list}
-    return render(request, 'blog/main.html', context)
+    names = ("hugo", "igor")
 
-def detail(request, question_id):
-    return HttpResponse("You're looking at question %s." % question_id)
+    items = []
+    for i in range(10):
+        items.append({
+            "name": random.choice(names),
+            "age": random.randint(20,80),
+            "url": "https://example.com",
+        })
 
-def results(request, question_id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % question_id)
+    context = {}
+    context["items_json"] = json.dumps(items)
 
-def vote(request, question_id):
-    return HttpResponse("You're voting on question %s." % question_id)
+    return render(request, 'blog/list.html', context)
