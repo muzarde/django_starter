@@ -130,4 +130,4 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-STATIC_ROOT = "/srv/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
