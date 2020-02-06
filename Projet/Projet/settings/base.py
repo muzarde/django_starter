@@ -7,13 +7,14 @@ import os
 from os.path import abspath, dirname, join
 from dotenv import load_dotenv
 
-DOTENV_PATH = join(dirname(dirname(dirname(abspath(__file__)))) ,'.env')
+DOTENV_PATH = join(dirname(dirname(dirname(abspath(__file__)))), '.env')
 load_dotenv(dotenv_path=DOTENV_PATH, verbose=True)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', os.urandom(32))
+# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', os.urandom(32))
+SECRET_KEY = 'tsy#*&$5rxw=q$xc8@42pr0_&hm6)q4d5h_n+8c5n0920ja479'
 
 
 # Application definition
