@@ -5,4 +5,5 @@ venv/
 **/__pycache__
 **/*.sqlite3
 .vscode
-staticfiles
+
+# settings/prod.py
